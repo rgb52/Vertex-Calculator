@@ -1,12 +1,18 @@
 
+var record = [];
 $(document).ready(function(){
   var result = 0.0;
   var equat = [];
-  var record = [];
+
+
   //$('#showRecords').unbind('click').click(function(){
 
 
 ///  })
+function clearing() {
+equat = [];
+document.getElementById("equation").value = equat;
+}
 $('#calculator tr td').unbind('click').click(function(){
    var keyPressed = this.innerHTML;
 function getEquation(part1, part2){
@@ -16,16 +22,24 @@ function getEquation(part1, part2){
 }
 
 if (keyPressed.indexOf("=") >= 0){
+
    ///result = document.getElementById('equation').innerHTML;
 ///   var makeEquat = equat.reduce(getEquation);
 // result = eval(makeEquat);
-record.push(equat);
+var completeEqua = equat;
+completeEqua.push(keyPressed);
 result = eval(document.getElementById("equation").value);
+completeEqua.push(result);
+completeEqua.push("</br>");
+completeEqua.reduce(getEquation);
+record.push(completeEqua);
+
+
+
    document.getElementById("equation").value = result;
 }
 else if (keyPressed.indexOf("CLEAR") >= 0) {
-  equat = [];
-  document.getElementById("equation").value = equat;
+  clearing();
 }
 else{
   equat.push(keyPressed);
@@ -38,6 +52,15 @@ else{
 
 
 
+
+}
+);
+window.addEventListener('beforeunload', function(event) {
+
+var sending = record.toString();
+exports.recordRelease = function() {
+    return sending;
+};
 
 }
 );

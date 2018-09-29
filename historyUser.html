@@ -1,16 +1,20 @@
 
+
     <html xmlns="http://www.w3.org/1999/xhtml">
    <script src="https://code.jquery.com/jquery-3.1.1.min.js"> </script>
-   <script type="text/javascript" src="calculator.js"></script>
+   <script type="text/javascript" src="calculator.js" type = "module"></script>
+   <script type="text/javascript" src="dataStorageScript.js"></script>
    <button onclick="location.href='startingUserCalculator.html'"> Back </button> </br>
 
    <h1>Records</h1>
    <p id ="Records"></p>
-   <script>
-   for(var i = 0; i <record.length; i++){
-   document.getElementById("Records").innerHTML = record[i];
-   }
-   </script>
 
+   <script>
+   ///var newRecord = require('calculator');
+   var ge = require('calculator');
+
+   document.getElementById("Records").innerHTML = ge.recordRelease();
+   </script>
    </html>
+   for
     
