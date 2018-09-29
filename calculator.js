@@ -1,8 +1,9 @@
 $(document).ready(function(){
   var result = 0.0;
   var equat = [];
+  var record = [];
   //$('#showRecords').unbind('click').click(function(){
-    
+
 
 ///  })
 $('#calculator tr td').unbind('click').click(function(){
@@ -17,8 +18,8 @@ if (keyPressed.indexOf("=") >= 0){
    ///result = document.getElementById('equation').innerHTML;
 ///   var makeEquat = equat.reduce(getEquation);
 // result = eval(makeEquat);
-
-result = eval(document.getElementById("equation").value)
+record.push(equat);
+result = eval(document.getElementById("equation").value);
    document.getElementById("equation").value = result;
 }
 else if (keyPressed.indexOf("CLEAR") >= 0) {
