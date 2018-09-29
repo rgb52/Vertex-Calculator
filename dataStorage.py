@@ -1,9 +1,11 @@
 #from bs4 import BeautifulSoup
-#import json
+import json
 #import os
 #import re
+
 z = open('historyUser.html', 'w')
 historyDisp = """
+    $ Python dataStorage.py
     <html xmlns="http://www.w3.org/1999/xhtml">
    <script src="https://code.jquery.com/jquery-3.1.1.min.js"> </script>
    <script type="text/javascript" src="calculator.js"></script>
@@ -19,6 +21,23 @@ historyDisp = """
 
    </html>
     """
+#soup = open('calculator.js', 'r')
+#recording = soup.findAll('<p> ')
+
+soup = BeautifulSoup(historyUser.html)
+
+#soup = open("/Users/robberbee/Documents/GitHub/Vertex-Calculator/calculator.js")
+recording = soup.find_all('p')
+newList = [e.text for e in recording]
+#recording = json.load(soup)
+calcRecords = list(set().union(calcRecords, newList))
+if len(newList) > 0:
+    for r in newList:
+        calcRecords.append(r)
+
+
+for z in calcRecords:
+    print(z)
 
 #calculator = open("calculator.js","r")
 #finding = calculator.read()
@@ -35,3 +54,4 @@ historyDisp = """
 
 z.write(historyDisp)
 z.close()
+soup.close()
