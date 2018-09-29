@@ -1,5 +1,6 @@
 
 import dataStorage
+import calculator
 d = open('startingUserCalculator.html','w')
 calcDisplay = """
  <html xmlns="http://www.w3.org/1999/xhtml">

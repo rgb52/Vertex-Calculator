@@ -12,7 +12,7 @@ historyDisp = """
    <h1>Records</h1>
    <p id ="Records"></p>
    <script>
-   for(var i = 0; i <record.length(); i++){
+   for(var i = 0; i <record.length; i++){
    document.getElementById("Records").innerHTML = record[i];
    }
    </script>

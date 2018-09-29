@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
   var result = 0.0;
   var equat = [];

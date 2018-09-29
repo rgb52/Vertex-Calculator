@@ -1,4 +1,7 @@
+from bs4 import BeautifulSoup
 
+t = open('calculator.js', 'w')
+calcFunction = """
 $(document).ready(function(){
   var result = 0.0;
   var equat = [];
@@ -41,3 +44,6 @@ else{
 
 }
 );
+"""
+t.write(calcFunction)
+t.close()
