@@ -1,9 +1,24 @@
 from bs4 import BeautifulSoup
-
-t = open('calculator.js', 'w')
+import dataStorage
+contentRec = set()
+t = open('CalculatorScript.js', 'w')
 calcFunction = """
 var record = [];
 $(document).ready(function(){
+function getEquation(part1, part2){
+  var create = part1 + part2;
+  create = create.split(' ').join('');
+  return create;
+}
+function keeper(update) {
+update = update.reduce(getEquation);
+var cur = new Date();
+var par = "<p>" + update + "</br>" + "  Time of Calculation: " + cur.toUTCString()  +"</p> </br>";
+
+record.push(par);
+
+///historyLib.getElementById('Records').appendChild(par);
+}
   var result = 0.0;
   var equat = [];
 
@@ -18,11 +33,7 @@ document.getElementById("equation").value = equat;
 }
 $('#calculator tr td').unbind('click').click(function(){
    var keyPressed = this.innerHTML;
-function getEquation(part1, part2){
-  var create = part1 + part2;
-  create = create.split(' ').join('');
-  return create;
-}
+
 
 if (keyPressed.indexOf("=") >= 0){
 
@@ -33,13 +44,10 @@ var completeEqua = equat;
 completeEqua.push(keyPressed);
 result = eval(document.getElementById("equation").value);
 completeEqua.push(result);
-completeEqua.push("</br>");
-completeEqua.reduce(getEquation);
-record.push(completeEqua);
+////completeEqua.push("</br>");
 
-
-
-   document.getElementById("equation").value = result;
+keeper(completeEqua);
+  document.getElementById("equation").value = result;
 }
 else if (keyPressed.indexOf("CLEAR") >= 0) {
   clearing();
@@ -58,15 +66,30 @@ else{
 
 }
 );
-window.addEventListener('beforeunload', function(event) {
-
-var sending = record.toString();
-exports.recordRelease = function() {
-    return sending;
-};
+///window.addEventListener('beforeunload', function(event) {
+function beforeWego() {
+///global.sharedRecord = {hist: record}
+document.open('historyUser.html');
+for (i=0; i < (record.length); i++){
+var theChild = record[i];
+document.write(theChild);
 
 }
-);
+var sending = record.toString();
+///exports.recordRelease = function() {
+///    return sending;
+///};
+
+}
+
 """
+
 t.write(calcFunction)
 t.close()
+from bs4 import BeautifulSoup
+with open('historyUser.html', 'r') as q:
+    content = q.read()
+    beautiful = BeautifulSoup(content, 'lxml')
+
+    recorded = beautiful.find(id = "equation")
+    contentRec.add(recorded)

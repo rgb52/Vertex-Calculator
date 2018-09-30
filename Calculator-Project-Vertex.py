@@ -7,9 +7,11 @@ calcDisplay = """
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <link rel="stylesheet" type="text/css" href="Calculator style.css">
   <script type="text/javascript" src="calculator.js"></script>
+    <script type="text/javascript" src="CalculatorScript.js"> </script>
 
 
-<center> <input type="text" name="" value="" size=90 id = "equation"></input> </center> </br>
+
+<center> <input type="text" name="" value="" size=90 id = "equation"> </input> </center> </br>
 <table id="calculator">
 
   <tr>
@@ -45,7 +47,7 @@ calcDisplay = """
 
 </table>
 </br> </br>
-<center> <button type="button" name="Records" id="showRecords" onclick="location.href='historyUser.html'"> Calculation Database </button></center>
+<center> <button type="button" name="Records" id="showRecords" onclick="beforeWego()"> Calculation Database </button></center>
 </html>
 """
 d.write(calcDisplay)

@@ -1,6 +1,9 @@
 #from bs4 import BeautifulSoup
 import json
-calcRecords = list()
+from calculator import *
+from bs4 import BeautifulSoup
+
+calcRecords = set()
 oldRecords = list()
 
 
@@ -14,19 +17,27 @@ z = open('historyUser.html', 'w')
 historyDisp = """
 
     <html xmlns="http://www.w3.org/1999/xhtml">
-   <script src="https://code.jquery.com/jquery-3.1.1.min.js"> </script>
-   <script type="text/javascript" src="calculator.js" type = "module"></script>
-   <script type="text/javascript" src="dataStorageScript.js"></script>
-   <button onclick="location.href='startingUserCalculator.html'"> Back </button> </br>
+      <center> <button type ="button" > "Back" </button></center> </br>
+
+   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+
+   <script type="text/javascript" src="calculator.js" type = "module"> </script>
+   <script type="text/javascript" src="dataStorageScript.js" type = "module"></script>
 
    <h1>Records</h1>
-   <p id ="Records"></p>
+   <div id ="Records"><p></p></div>
 
    <script>
-   ///var newRecord = require('calculator');
-   var ge = require('calculator');
+   ///var newRecord = require('./calculator');
 
-   document.getElementById("Records").innerHTML = ge.recordRelease();
+
+$(document).ready(function(){
+///var ge = require('./calculator');
+///alert("Here its activated");
+///document.getElementById("Records").innerHTML = ge.recordRelease();
+}
+);
    </script>
    </html>
    for
@@ -35,6 +46,8 @@ historyDisp = """
 #recording = soup.findAll('<p> ')
 
 z.write(historyDisp)
+srt = repr(contentRec)
+z.write(srt)
 
 
 #soup = open("/Users/robberbee/Documents/GitHub/Vertex-Calculator/calculator.js")
@@ -49,19 +62,24 @@ z.write(historyDisp)
 
 
 z.close()
-from bs4 import BeautifulSoup
-with open("historyUser.html", "r") as u:
-    content = u.read()
-    beautiful = BeautifulSoup(content, 'lxml')
-    recording = beautiful.p.find_all('p');
-    #pars = recording.string
-    newList = []
-    for e in recording:
-        newList.append[e]
-    calcRecords += newList
-    calcRecords =set(calcRecords)
 
-#soup.close()
+
+soup = BeautifulSoup(open("historyUser.html", "r+"), "html.parser")
+    #beautiful = BeautifulSoup(u, 'html.parser')
+recording = soup.find_all('p')
+    #pars = recording.string
+newList = set()
+for e in recording:
+    newList.add(e)
+calcRecords += newList
+
+calcRecords =set(calcRecords)
+completeList = calcRecords.difference(newList)
+#creatIng = calcRecords.values()
+for i in completeList:
+    print(i)
+
+
 #calculator = open("calculator.js","r")
 #finding = calculator.read()
 

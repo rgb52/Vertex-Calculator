@@ -1,20 +1,28 @@
 
 
     <html xmlns="http://www.w3.org/1999/xhtml">
-   <script src="https://code.jquery.com/jquery-3.1.1.min.js"> </script>
-   <script type="text/javascript" src="calculator.js" type = "module"></script>
-   <script type="text/javascript" src="dataStorageScript.js"></script>
-   <button onclick="location.href='startingUserCalculator.html'"> Back </button> </br>
+      <center> <button type ="button" > "Back" </button></center> </br>
+
+   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+
+   <script type="text/javascript" src="calculator.js" type = "module"> </script>
+   <script type="text/javascript" src="dataStorageScript.js" type = "module"></script>
 
    <h1>Records</h1>
-   <p id ="Records"></p>
+   <div id ="Records"><p></p></div>
 
    <script>
-   ///var newRecord = require('calculator');
-   var ge = require('calculator');
+   ///var newRecord = require('./calculator');
 
-   document.getElementById("Records").innerHTML = ge.recordRelease();
+
+$(document).ready(function(){
+///var ge = require('./calculator');
+///alert("Here its activated");
+///document.getElementById("Records").innerHTML = ge.recordRelease();
+}
+);
    </script>
    </html>
    for
-    
+    {None}
