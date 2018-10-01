@@ -1,0 +1,66 @@
+
+#import dataStorage
+import calculator
+import flaskScript
+#import scrapperOfData
+d = open('startingUserCalculator.html','w')
+calcDisplay = """
+ <html xmlns="http://www.w3.org/1999/xhtml" Content-Type: "text/plain">
+ <meta charset=utf-8 >
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="Calculator style.css">
+
+    <script type="text/javascript" src="CalculatorScript.js"> </script>
+    <!-- <script src="/Users/robberbee/Documents/GitHub/Vertex-Calculator/node_modules/debug/src/node.js"> </script> -->
+
+<title>Calculator</title>
+
+
+
+
+<center> <input type="text" name="" value="" size=90 id = "equation"> </input> </center> </br>
+<table id="calculator">
+
+  <tr>
+    <td> 1 </td>
+    <td> 2</td>
+    <td> 3</td>
+    <td> CLEAR </td>
+  </tr>
+  <tr>
+    <td> 4</td>
+    <td> 5</td>
+    <td>6</td>
+    <td> * </td>
+  </tr>
+  <tr>
+    <td> 7</td>
+    <td> 8</td>
+    <td> 9</td>
+    <td> - </td>
+  </tr>
+  <tr>
+    <td>0 </td>
+    <td> . </td>
+    <td> = </td>
+    <td> + </td>
+  </tr>
+  <tr>
+    <td> </td>
+    <td> ( </td>
+    <td> ) </td>
+    <td> / </td>
+  </tr>
+
+</table>
+</br> </br>
+<center>
+<a href ="historyUser.html">Full history</a>
+<button type="button" name="Records" id="showRecords"> Calculation Database </button></center>
+<center><div id="today" style="background-color:lightblue"> hmmmmm </div></center>
+<p> Lets test something shall we? </p>
+</html>
+"""
+d.write(calcDisplay)
+d.close()

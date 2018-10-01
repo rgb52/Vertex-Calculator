@@ -1,17 +1,50 @@
 
 var record = [];
+///var fs = require('fs');
+
 $(document).ready(function(){
+var newRecords = "";
+
+
+function aj() {
+$.ajax({
+
+url: "/Users/robberbee/Documents/GitHub/Vertex-Calculator/scrapperOfData.py"
+
+
+
+
+
+});
+}
+
+$("#showRecords").click(function(){
+$.ajax({
+type: "GET",
+url: "/Users/robberbee/Documents/GitHub/Vertex-Calculator/scrapperOfData.py"
+
+
+
+
+
+});
+beforeWego();
+});
+
 function getEquation(part1, part2){
   var create = part1 + part2;
   create = create.split(' ').join('');
   return create;
 }
 function keeper(update) {
+
 update = update.reduce(getEquation);
 var cur = new Date();
-var par = "<p>" + update + "</br>" + "  Time of Calculation: " + cur.toUTCString()  +"</p> </br>";
+///var par = "<p class='importantRec' > " + update + "</br>" + "  Time of Calculation: " + cur.toUTCString()  +"</p>";
+var par =  update + " Time of Calculation: " + cur.toUTCString()  + "</br>";
+newRecords += par;
+document.getElementById("today").innerHTML = newRecords;
 
-record.push(par);
 
 ///historyLib.getElementById('Records').appendChild(par);
 }
@@ -44,6 +77,9 @@ completeEqua.push(result);
 
 keeper(completeEqua);
   document.getElementById("equation").value = result;
+  equat = [];
+  equat.push(result);
+  aj();
 }
 else if (keyPressed.indexOf("CLEAR") >= 0) {
   clearing();
@@ -65,16 +101,22 @@ else{
 ///window.addEventListener('beforeunload', function(event) {
 function beforeWego() {
 ///global.sharedRecord = {hist: record}
-document.open('historyUser.html');
-for (i=0; i < (record.length); i++){
-var theChild = record[i];
-document.write(theChild);
+location.replace("historyUser.html");
+///file =fopen("c:\historyUser.html", 3);
+//document.open("historyUser.html");
+///for (i=0; i < (record.length); i++){
+//var theChild = record[i];
+
+//document.write(theChild);
+//fs.appendFile( 'CalculationStorage.txt',theChild);
 
 }
-var sending = record.toString();
+
+
+//var sending = record.toString();
 ///exports.recordRelease = function() {
 ///    return sending;
 ///};
 
-}
+
 

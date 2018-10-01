@@ -58,7 +58,7 @@ else{
 window.addEventListener('beforeunload', function(event) {
 
 var sending = record.toString();
-exports.recordRelease = function() {
+recordRelease = function() {
     return sending;
 };
 
